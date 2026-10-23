@@ -13,7 +13,7 @@ Claude Code 的 PreToolUse hook：寫入 `.md` 前檢查省 token 的格式規�
 - 路徑含 `node_modules`、`.claude/plugins`、`.claude/projects`、`.claude/plans` 的檔案不檢查。
 
 ## 安裝
-1. 把 `md-lint.js` 放到 `~/.claude/hooks/`。
+1. 把 `md-lint.js` 放到 `~/.claude/md-lint/`。
 2. 在 `~/.claude/settings.json` 的 `hooks.PreToolUse` 加入：
 
 ```json
@@ -22,7 +22,7 @@ Claude Code 的 PreToolUse hook：寫入 `.md` 前檢查省 token 的格式規�
   "hooks": [
     {
       "type": "command",
-      "command": "node ~/.claude/hooks/md-lint.js",
+      "command": "node ~/.claude/md-lint/md-lint.js",
       "timeout": 10,
       "statusMessage": "檢查 md 省 token 規則"
     }
@@ -32,6 +32,7 @@ Claude Code 的 PreToolUse hook：寫入 `.md` 前檢查省 token 的格式規�
 
 - 需要 Node.js。
 - Windows 上 `~` 不一定會展開，`command` 請換成實際的絕對路徑。
+- 用 [toolkeeper](https://github.com/94sh09sh19sh/toolkeeper) 管理時，`deploy md-lint` 會自動完成以上兩步。
 
 ## 已知限制
 - 只檢查這次寫入的片段；擋下訊息的行號從片段起算，不是整份檔案的行號。

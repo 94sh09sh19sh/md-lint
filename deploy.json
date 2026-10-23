@@ -1,0 +1,6 @@
+{
+  "target": "md-lint",
+  "hooks": [
+    { "event": "PreToolUse", "matcher": "Write|Edit|MultiEdit", "script": "md-lint.js", "timeout": 10, "statusMessage": "檢查 md 省 token 規則" }
+  ]
+}
